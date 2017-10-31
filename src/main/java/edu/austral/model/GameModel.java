@@ -3,6 +3,7 @@ package edu.austral.model;
 import edu.austral.controller.InputController.Command;
 import edu.austral.controller.InputController.InputHandler;
 import edu.austral.util.CollisionEngine;
+import edu.austral.view.GameView;
 import scala.collection.JavaConverters;
 
 import java.util.LinkedList;
@@ -37,15 +38,19 @@ public class GameModel {
         spaceModels.forEach(SpaceModel::iterate);
     }
 
+    public void clearDeadModels() {
+        this.spaceModels = spaceModels.stream().filter(model -> model.active).collect(Collectors.toList());
+    }
+
     public void checkCollisions() {
         collisionEngine.checkCollisions(JavaConverters.asScalaBuffer(
                 Stream.of(spaceModels, spaceships).flatMap(List::stream).collect(Collectors.toList())));
     }
 
-    public void keyPressed(boolean[] keys, InputHandler inputHandler) {
+    public void keyPressed(boolean[] keys, InputHandler inputHandler, GameView gameView) {
         spaceships.forEach(spaceship -> {
             Command command = inputHandler.handleInput(keys);
-            if (command != null) command.execute((Spaceship) spaceship);
+            if (command != null) command.execute((Spaceship) spaceship, gameView, this);
         });
     }
 }

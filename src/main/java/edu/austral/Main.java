@@ -16,14 +16,14 @@ public class Main extends GameFramework {
     @Override
     public void setup() {
         super.setup();
-        gameController = new GameController();
+        gameController = new GameController(this);
         gameController.setup();
     }
 
     @Override public void draw(float time, PApplet graphics) {
-        gameController.draw(graphics);
-        gameController.keyPressed(keys);
         gameController.iterate();
+        gameController.keyPressed(keys);
+        gameController.draw();
     }
 
     @Override public void keyPressed(KeyEvent event) {

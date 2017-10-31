@@ -19,11 +19,6 @@ public class SpaceshipView implements DrawBehaviour {
         graphics.rotate(((Spaceship) model).getAngle());
         graphics.image(image, 0, 0);
         graphics.popMatrix();
-//        graphics.rect(
-//                model.getShape().getBounds().x,
-//                model.getShape().getBounds().y,
-//                model.getShape().getBounds().height,
-//                model.getShape().getBounds().width);
     }
 
     @Override

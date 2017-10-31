@@ -1,17 +1,20 @@
 package edu.austral.model;
 
 import edu.austral.util.Vector2;
+import edu.austral.view.GameView;
 
 public class Spaceship extends SpaceModel {
 
     private float angle;
     private Player player;
+    private Weapon weapon;
 
     public Spaceship() {
         position = new Vector2(100, 100);
         direction = new Vector2(0, -1);
         speed = 3f;
         angle = 0;
+        setWeapon(new BasicWeapon(0, 2.5f));
     }
 
     public void setPlayer(Player player) {
@@ -22,6 +25,15 @@ public class Spaceship extends SpaceModel {
     }
     public float getAngle() {
         return this.angle;
+    }
+
+    public void setWeapon(Weapon weapon) {
+        this.weapon = weapon;
+        this.weapon.setPlayer(this.player);
+    }
+
+    public void shoot(GameModel gameModel, GameView gameView) {
+        this.weapon.shoot(gameModel, gameView, this.position, this.direction.rotate(angle));
     }
 
     @Override
@@ -47,7 +59,7 @@ public class Spaceship extends SpaceModel {
 
     @Override
     public void collide(Weapon weapon) {
-
+        setWeapon(weapon);
     }
 
     @Override
@@ -79,8 +91,6 @@ public class Spaceship extends SpaceModel {
         translateShape(direction.$times(speed).rotate(angle));
         checkBounds();
     }
-
-    // TODO: A mejorar
 
     private void teleportX() {
         Vector2 vec = new Vector2(GameSetup.WIDTH ,0);

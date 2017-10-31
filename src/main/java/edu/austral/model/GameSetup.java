@@ -6,6 +6,7 @@ public class GameSetup {
 
     public static final String ASTEROID_URL = "src/main/java/edu/austral/view/assets/asteroid.png";
     public static final String SPACESHIP_URL = "src/main/java/edu/austral/view/assets/spaceship.png";
+    public static final String LASER1_URL = "src/main/java/edu/austral/view/assets/laser1.png";
 
     public static final int HEIGHT = 720;
     public static final int WIDTH = 1080;

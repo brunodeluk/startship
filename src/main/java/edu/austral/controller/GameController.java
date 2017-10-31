@@ -13,14 +13,14 @@ public class GameController implements Controller {
     private GameView gameView;
     private InputHandler inputHandler;
 
-    public GameController() {
+    public GameController(PApplet applet) {
         this.gameModel = new GameModel();
-        this.gameView = new GameView();
+        this.gameView = new GameView(applet);
         this.inputHandler = new InputHandler();
     }
 
     public void setup() {
-        spawnAsteroids(20);
+        spawnAsteroids(2);
         spawnSpaceship();
     }
 
@@ -37,6 +37,12 @@ public class GameController implements Controller {
     public void iterate() {
         gameModel.iterate();
         checkCollisions();
+        clearDeadModels();
+    }
+
+    private void clearDeadModels() {
+        gameView.clearDeadViews();
+        gameModel.clearDeadModels();
     }
 
     public void checkCollisions() {
@@ -44,11 +50,11 @@ public class GameController implements Controller {
     }
 
     public void keyPressed(boolean[] keys) {
-        gameModel.keyPressed(keys, inputHandler);
+        gameModel.keyPressed(keys, inputHandler, gameView);
     }
 
-    public void draw(PApplet graphics) {
-        this.gameView.draw(graphics);
+    public void draw() {
+        this.gameView.draw();
     }
 
 }

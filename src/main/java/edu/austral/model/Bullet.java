@@ -2,19 +2,31 @@ package edu.austral.model;
 
 public class Bullet extends SpaceModel {
 
+    private int damage;
+    private Player player;
+
+    public Bullet(int damage) {
+        this.damage = damage;
+        speed = 10;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
     @Override
     public void collisionedWith(SpaceModel spaceModel) {
-        spaceModel.collide(this);
+
     }
 
     @Override
     public void checkBounds() {
-
+        if (isOutOfBoundY() || isOutOfBoundX()) active = false;
     }
 
     @Override
     public void collide(Asteroid asteroid) {
-
+        System.out.println("pepi");
     }
 
     @Override
@@ -34,6 +46,12 @@ public class Bullet extends SpaceModel {
 
     @Override
     public void iterate() {
+        move();
+        translateShape(direction);
+        checkBounds();
+    }
 
+    private void move() {
+        position = position.$plus(direction.$times(speed));
     }
 }

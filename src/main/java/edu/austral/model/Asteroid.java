@@ -32,7 +32,7 @@ public class Asteroid extends SpaceModel {
 
     @Override
     public void collide(Bullet bullet) {
-
+        System.out.println("pepe");
     }
 
     @Override
@@ -42,7 +42,7 @@ public class Asteroid extends SpaceModel {
 
     @Override
     public void collide(Spaceship spaceship) {
-        rotate();
+
     }
 
     @Override

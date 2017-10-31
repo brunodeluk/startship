@@ -10,8 +10,12 @@ public abstract class SpaceModel implements Model, Collisionable<SpaceModel> {
 
     public Vector2 position, direction;
     public float speed;
-
+    public boolean active;
     private Shape shape;
+
+    public SpaceModel() {
+        this.active = true;
+    }
 
     public void translateShape(Vector2 direction) {
         final AffineTransform transform = AffineTransform.getTranslateInstance(

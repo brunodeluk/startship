@@ -18,15 +18,14 @@ public class SpaceView implements View {
     }
 
     public void draw(PApplet graphics) {
-        if (!hasImage()) setUpImageAndShape(graphics);
         drawBehaviour.draw(graphics, image, model);
     }
 
-    private boolean hasImage() {
-        return image != null;
+    public boolean isActive() {
+        return model.active;
     }
 
-    private void setUpImageAndShape(PApplet graphics) {
+    public void setupImageAndShape(PApplet graphics) {
         image = drawBehaviour.loadImage(graphics);
         model.setShape(new Rectangle2D.Float(model.position.x(), model.position.y(), image.width, image.height));
     }
