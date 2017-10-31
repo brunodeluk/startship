@@ -3,6 +3,8 @@ package edu.austral.util
 import java.awt.Shape
 import java.awt.geom.Area
 
+import scala.collection.mutable
+
 trait Collisionable[T <: Collisionable[T]] {
   def getShape: Shape
 
@@ -10,7 +12,7 @@ trait Collisionable[T <: Collisionable[T]] {
 }
 
 class CollisionEngine[T <: Collisionable[T]] {
-  def checkCollisions(collisionables: List[T]): Unit = {
+  def checkCollisions(collisionables: mutable.Buffer[T]): Unit = {
     if (collisionables.isEmpty) return
 
     checkCollisions(collisionables.head, collisionables.tail)
@@ -22,7 +24,7 @@ class CollisionEngine[T <: Collisionable[T]] {
     !areaA.isEmpty
   }
 
-  private def checkCollisions(current: T, collisionables: List[T]): Unit = {
+  private def checkCollisions(current: T, collisionables: mutable.Buffer[T]): Unit = {
     if (collisionables.isEmpty) return
 
     collisionables

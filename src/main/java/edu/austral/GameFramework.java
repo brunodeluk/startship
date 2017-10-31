@@ -1,13 +1,14 @@
 package edu.austral;
 
+import edu.austral.model.GameSetup;
 import processing.core.PApplet;
+import processing.event.KeyEvent;
 
-import java.awt.event.KeyEvent;
 
 public abstract class GameFramework extends PApplet {
 
     @Override public void settings() {
-        size(500, 500);
+        size(GameSetup.WIDTH, GameSetup.HEIGHT);
     }
 
     @Override public void setup() {
