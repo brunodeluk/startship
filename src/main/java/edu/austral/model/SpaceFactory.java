@@ -1,9 +1,9 @@
 package edu.austral.model;
 
-import edu.austral.view.GameView;
+import edu.austral.controller.GameController;
 
-public interface SpaceFactory {
-    public void createSpaceModels(int i, GameModel gameModel, GameView gameView);
-    public void createSpaceModel(GameModel gameModel, GameView gameView);
-    public SpaceModel createSpaceModel();
+public interface SpaceFactory<T extends SpaceModel> {
+    public void createSpaceModels(int i, GameController gameController);
+    public void createSpaceModel(GameController gameController);
+    public T createSpaceModel();
 }

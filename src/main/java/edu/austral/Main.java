@@ -1,13 +1,18 @@
 package edu.austral;
 
 import edu.austral.controller.GameController;
+import edu.austral.model.GameSetup;
 import processing.core.PApplet;
+import processing.core.PImage;
 import processing.event.KeyEvent;
+
+import java.io.File;
 
 public class Main extends GameFramework {
 
     private GameController gameController;
     private boolean[] keys = new boolean[255];
+    PImage background;
 
     public static void main(String args[]) {
         PApplet.main("edu.austral.Main");
@@ -16,12 +21,15 @@ public class Main extends GameFramework {
     @Override
     public void setup() {
         super.setup();
-        gameController = new GameController();
+        background = loadImage(new File(GameSetup.BACKGROUND).getAbsolutePath());
+        background.resize(GameSetup.WIDTH, GameSetup.HEIGHT);
+        gameController = new GameController(this);
         gameController.setup();
     }
 
     @Override public void draw(float time, PApplet graphics) {
-        gameController.draw(graphics);
+        background(background);
+        gameController.draw();
         gameController.keyPressed(keys);
         gameController.iterate();
     }

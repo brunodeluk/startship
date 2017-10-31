@@ -2,7 +2,10 @@ package edu.austral;
 
 import edu.austral.model.GameSetup;
 import processing.core.PApplet;
+import processing.core.PImage;
 import processing.event.KeyEvent;
+
+import java.io.File;
 
 
 public abstract class GameFramework extends PApplet {

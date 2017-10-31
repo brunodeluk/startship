@@ -19,11 +19,11 @@ public class SpaceshipView implements DrawBehaviour {
         graphics.rotate(((Spaceship) model).getAngle());
         graphics.image(image, 0, 0);
         graphics.popMatrix();
-//        graphics.rect(
-//                model.getShape().getBounds().x,
-//                model.getShape().getBounds().y,
-//                model.getShape().getBounds().height,
-//                model.getShape().getBounds().width);
+
+        graphics.pushMatrix();
+        graphics.text("Life " + model.getLife(), model.position.x() - 50,model.position.y() + 50);
+        graphics.text("Score " + ((Spaceship)model).getPlayer().getScore(), model.position.x() - 50,model.position.y() + 60);
+        graphics.popMatrix();
     }
 
     @Override

@@ -21,26 +21,55 @@ public class GameModel {
         this.collisionEngine = new CollisionEngine<SpaceModel>();
     }
 
+    /**
+     * Adds any SpaceModel into the list
+     * @param model
+     */
+
     public void addSpaceModel(SpaceModel model) {
         this.spaceModels.add(model);
     }
+
+    /**
+     * Adds a new Spaceship into the list
+     * @param spaceship
+     */
 
     public void addSpaceship(SpaceModel spaceship) {
         this.spaceships.add(spaceship);
     }
 
-    public void removeModel(SpaceModel model) {
-        this.spaceModels.remove(model);
-    }
+    /**
+     * Loops over the spaceModel's list and calls each one to iterate
+     */
 
     public void iterate() {
         spaceModels.forEach(SpaceModel::iterate);
     }
 
+    /**
+     * For every iteration, we want to filter the models that are still active
+     */
+
+    public void removeDeadModels() {
+        spaceModels = spaceModels.stream().filter(SpaceModel::isActive).collect(Collectors.toList());
+    }
+
+    /**
+     * Loops over the main list and checks for collisions
+     */
+
     public void checkCollisions() {
         collisionEngine.checkCollisions(JavaConverters.asScalaBuffer(
                 Stream.of(spaceModels, spaceships).flatMap(List::stream).collect(Collectors.toList())));
     }
+
+    /**
+     * If there was a key pressed, we want to loop over the spaceship's list
+     * and call for each of the spaceships commands.
+     * @param keys array of keys
+     * @param inputHandler to handle input events
+     */
 
     public void keyPressed(boolean[] keys, InputHandler inputHandler) {
         spaceships.forEach(spaceship -> {

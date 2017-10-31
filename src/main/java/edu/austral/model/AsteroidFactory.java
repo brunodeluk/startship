@@ -1,26 +1,27 @@
 package edu.austral.model;
 
+import edu.austral.controller.GameController;
 import edu.austral.view.AsteroidView;
 import edu.austral.view.GameView;
 import edu.austral.view.SpaceView;
 
-public class AsteroidFactory implements SpaceFactory {
+public class AsteroidFactory implements SpaceFactory<Asteroid> {
 
     @Override
-    public void createSpaceModels(int count, GameModel gameModel, GameView gameView) {
-        for (int i = 0; i < count; i++) createSpaceModel(gameModel, gameView);
+    public void createSpaceModels(int count, GameController gameController) {
+        for (int i = 0; i < count; i++) createSpaceModel(gameController);
     }
 
     @Override
-    public void createSpaceModel(GameModel gameModel, GameView gameView) {
+    public void createSpaceModel(GameController gameController) {
         SpaceModel asteroid = createSpaceModel();
-        gameModel.addSpaceModel(asteroid);
+        gameController.getGameModel().addSpaceModel(asteroid);
         SpaceView spaceView = new SpaceView(asteroid, new AsteroidView());
-        gameView.addView(spaceView);
+        gameController.getGameView().addView(spaceView);
     }
 
     @Override
-    public SpaceModel createSpaceModel() {
-        return new Asteroid();
+    public Asteroid createSpaceModel() {
+        return new Asteroid(100, 100, 100);
     }
 }

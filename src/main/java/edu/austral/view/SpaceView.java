@@ -6,6 +6,13 @@ import processing.core.PImage;
 
 import java.awt.geom.Rectangle2D;
 
+/**
+ * Class for handling the model's view. In this implementation
+ * of MVC, the View knows the Model.
+ *
+ * We use the Strategy Design Pattern to handle drawing behaviours
+ */
+
 public class SpaceView implements View {
 
     private PImage image;
@@ -17,16 +24,31 @@ public class SpaceView implements View {
         this.drawBehaviour = drawBehaviour;
     }
 
+    /**
+     * Returns the model
+     * @return model
+     */
+
+    public SpaceModel getModel() {
+        return model;
+    }
+
+    /**
+     * Method that calls the respective draw behaviour which
+     * really knows how to draw the model
+     * @param graphics
+     */
+
     public void draw(PApplet graphics) {
-        if (!hasImage()) setUpImageAndShape(graphics);
         drawBehaviour.draw(graphics, image, model);
     }
 
-    private boolean hasImage() {
-        return image != null;
-    }
+    /**
+     * Sets a new Shape relative to the image dimensions
+     * @param graphics
+     */
 
-    private void setUpImageAndShape(PApplet graphics) {
+    public void setUpImageAndShape(PApplet graphics) {
         image = drawBehaviour.loadImage(graphics);
         model.setShape(new Rectangle2D.Float(model.position.x(), model.position.y(), image.width, image.height));
     }

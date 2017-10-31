@@ -19,6 +19,9 @@ public class AsteroidView implements DrawBehaviour {
         graphics.noTint();
         graphics.image(image, 0, 0);
         graphics.popMatrix();
+        graphics.pushMatrix();
+        graphics.text(asteroid.getLife(), asteroid.position.x(), asteroid.position.y() + 50);
+        graphics.popMatrix();
     }
 
     @Override

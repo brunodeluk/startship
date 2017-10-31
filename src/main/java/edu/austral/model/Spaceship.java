@@ -2,26 +2,61 @@ package edu.austral.model;
 
 import edu.austral.util.Vector2;
 
-public class Spaceship extends SpaceModel {
+import java.util.LinkedList;
+import java.util.List;
+
+public class Spaceship extends SpaceModel implements Observable {
 
     private float angle;
     private Player player;
+    private Weapon weapon;
 
-    public Spaceship() {
-        position = new Vector2(100, 100);
+    /**
+     * List of observers
+     */
+
+    private List<Observer> observers;
+
+    public Spaceship(int life) {
+        this.observers = new LinkedList<>();
+        position = new Vector2(GameSetup.WIDTH / 2, 2*GameSetup.HEIGHT / 3);
         direction = new Vector2(0, -1);
         speed = 3f;
         angle = 0;
+        setLife(life);
     }
 
     public void setPlayer(Player player) {
         this.player = player;
     }
+
+    public Player getPlayer() {
+        return player;
+    }
+
     public void setAngle(float angle) {
         this.angle = angle;
     }
+
     public float getAngle() {
         return this.angle;
+    }
+
+    public Weapon getWeapon() {
+        return weapon;
+    }
+
+    public void setWeapon(Weapon weapon) {
+        this.weapon = weapon;
+        this.weapon.setPlayer(player);
+    }
+
+    public void shoot() {
+        if (hasWeapon() && weapon.shoot()) notifyObservers();
+    }
+
+    private boolean hasWeapon() {
+        return weapon != null;
     }
 
     @Override
@@ -30,14 +65,11 @@ public class Spaceship extends SpaceModel {
     }
 
     @Override
-    public void checkBounds() {
-        if (isOutOfBoundX()) teleportX();
-        if (isOutOfBoundY()) teleportY();
-    }
+    public void checkBounds() {}
 
     @Override
     public void collide(Asteroid asteroid) {
-
+        takeLife(asteroid.getDamage());
     }
 
     @Override
@@ -47,7 +79,7 @@ public class Spaceship extends SpaceModel {
 
     @Override
     public void collide(Weapon weapon) {
-
+        setWeapon(weapon);
     }
 
     @Override
@@ -59,6 +91,10 @@ public class Spaceship extends SpaceModel {
     public void iterate() {
 
     }
+
+    /**
+     * Methods that define the movement of the spaceship
+     */
 
     public void moveUp() {
         move(0);
@@ -80,27 +116,18 @@ public class Spaceship extends SpaceModel {
         checkBounds();
     }
 
-    // TODO: A mejorar
-
-    private void teleportX() {
-        Vector2 vec = new Vector2(GameSetup.WIDTH ,0);
-        if (position.x() < 0) {
-            position = position.$plus(vec);
-            translateShape(vec);
-        } else {
-            position = position.$plus(vec.rotate((float) Math.PI));
-            translateShape(vec.rotate((float) Math.PI));
-        }
+    @Override
+    public void add(Observer observer) {
+        observers.add(observer);
     }
 
-    private void teleportY() {
-        Vector2 vec = new Vector2(0 , GameSetup.HEIGHT);
-        if (position.y() < 0) {
-            position = position.$plus(vec);
-            translateShape(vec);
-        } else {
-            position = position.$plus(vec.rotate((float) Math.PI));
-            translateShape(vec.rotate((float) Math.PI));
-        }
+    @Override
+    public void remove(Observer observer) {
+        observers.remove(observer);
+    }
+
+    @Override
+    public void notifyObservers() {
+        observers.forEach(o -> o.update(this));
     }
 }
