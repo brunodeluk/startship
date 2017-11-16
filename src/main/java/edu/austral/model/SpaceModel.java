@@ -25,7 +25,7 @@ public abstract class SpaceModel implements Model, Collisionable<SpaceModel> {
     }
 
     /**
-     * Retuns the score
+     * Returns the score
      * @return score
      */
 
@@ -117,16 +117,6 @@ public abstract class SpaceModel implements Model, Collisionable<SpaceModel> {
     }
 
     /**
-     * Implementation of the collisionedWith(). This method HAS to be
-     * implemented by each of the sub classes. It uses polymorphism to
-     * handle collisions with a space model
-     * @param spaceModel
-     */
-
-    @Override
-    public abstract void collisionedWith(SpaceModel spaceModel);
-
-    /**
      * Sets the shape of the model
      * @param shape
      */
@@ -141,7 +131,15 @@ public abstract class SpaceModel implements Model, Collisionable<SpaceModel> {
     @Override
     public Shape getShape() { return this.shape; }
 
-    public abstract void checkBounds();
+    /**
+     * Implementation of the collisionedWith(). This method HAS to be
+     * implemented by each of the sub classes. It uses polymorphism to
+     * handle collisions with a space model
+     * @param spaceModel
+     */
+
+    @Override
+    public abstract void collisionedWith(SpaceModel spaceModel);
 
     /**
      * Abstract method for handling collisions with an Asteroid
@@ -177,5 +175,7 @@ public abstract class SpaceModel implements Model, Collisionable<SpaceModel> {
      */
 
     public abstract void iterate();
+
+    public abstract void checkBounds();
 
 }

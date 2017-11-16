@@ -8,28 +8,22 @@ public class Player {
 
     private static int playerIdTracker = 0;
     private int id;
-    private String name;
     private int score;
 
     public Player() {
-        setIdAndName();
+        setId();
     }
 
     /**
      * Sets name of the player using the ID
      */
 
-    private void setIdAndName() {
+    private void setId() {
         id = ++playerIdTracker;
-        name = "Player" + id;
     }
 
     public int getId() {
         return id;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public void setScore(int score) {

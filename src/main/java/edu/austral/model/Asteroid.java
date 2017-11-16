@@ -20,7 +20,7 @@ public class Asteroid extends SpaceModel {
     private void setRandomPosition() {
         position = new Vector2(Random.random(0, GameSetup.WIDTH), Random.random(0, GameSetup.HEIGHT / 2));
         direction = new Vector2(Random.nextFloat(), Random.nextFloat()).unitary();
-        speed = 1;
+        speed = Random.nextFloat() * 2;
     }
 
     /**
@@ -51,11 +51,6 @@ public class Asteroid extends SpaceModel {
     public void checkBounds() {
         if (isOutOfBoundX() || isOutOfBoundY()) rotate();
     }
-
-    /**
-     * Define method for colliding with another asteroid
-     * @param asteroid
-     */
 
     @Override
     public void collide(Asteroid asteroid) { }

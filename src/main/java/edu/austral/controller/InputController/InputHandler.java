@@ -4,8 +4,7 @@ import java.awt.event.KeyEvent;
 
 /**
  * Main class that handles every input of the game.
- *
- * We use the Command Design Pattern
+ * We use the Commander Design Pattern
  */
 
 public class InputHandler {

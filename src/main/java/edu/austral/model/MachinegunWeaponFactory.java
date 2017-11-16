@@ -3,7 +3,6 @@ package edu.austral.model;
 import edu.austral.controller.GameController;
 import edu.austral.util.Random;
 import edu.austral.util.Vector2;
-import edu.austral.view.BasicWeaponView;
 import edu.austral.view.MachinegunWeaponView;
 import edu.austral.view.SpaceView;
 
@@ -27,6 +26,6 @@ public class MachinegunWeaponFactory implements SpaceFactory<Weapon> {
 
     @Override
     public Weapon createSpaceModel() {
-        return new BasicWeapon(new Bullet(10, 20), 100, 7.5f);
+        return new MachinegunWeapon(new Bullet(10, 20), 100, 7.5f);
     }
 }

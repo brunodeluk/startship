@@ -3,7 +3,6 @@ package edu.austral.model;
 public abstract class Weapon extends SpaceModel {
 
     private int ammo;
-    private Player player;
     private Bullet bullet;
     private float fireRate;
 

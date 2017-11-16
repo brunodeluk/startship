@@ -22,5 +22,5 @@ public class BulletFactory {
         SpaceView bulletView = new SpaceView(bullet, new BasicBulletView());
         gameController.getGameView().addView(bulletView);
     }
-
+    
 }

@@ -13,10 +13,10 @@ public class GameController implements Controller, Observer {
     private InputHandler inputHandler;
 
     public GameController(PApplet graphics) {
-        this.gameModel = new GameModel();
-        this.gameView = new GameView(graphics);
+        this.gameModel    = new GameModel();
+        this.gameView     = new GameView(graphics);
         this.inputHandler = new InputHandler();
-        this.weaponPool = new WeaponPool();
+        this.weaponPool   = new WeaponPool();
     }
 
     /**
@@ -30,7 +30,7 @@ public class GameController implements Controller, Observer {
 
     /**
      * We use a factory that generates new Asteroids. We pass THIS controllers so that
-     * the factory can assgin the new model to the game model and the view to the game view
+     * the factory can assign the new model to the game model and the view to the game view
      */
 
     public void spawnAsteroids() {
@@ -48,7 +48,7 @@ public class GameController implements Controller, Observer {
     }
 
     /**
-     * Like the other factories, it generates new bullets and assigns then to
+     * Like the other factories, it generates new bullets and assigns them to
      * its respective game model and view
      * @param spaceship used to get useful properties
      */
