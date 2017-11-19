@@ -64,6 +64,8 @@ public class GameModel {
                 Stream.of(spaceModels, spaceships).flatMap(List::stream).collect(Collectors.toList())));
     }
 
+
+
     /**
      * If there was a key pressed, we want to loop over the spaceship's list
      * and call for each of the spaceships commands.

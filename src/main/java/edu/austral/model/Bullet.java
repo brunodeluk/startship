@@ -59,6 +59,11 @@ public class Bullet extends SpaceModel {
     }
 
     @Override
+    public void collide(Star star) {
+
+    }
+
+    @Override
     public void collide(Spaceship spaceship) {
 
     }

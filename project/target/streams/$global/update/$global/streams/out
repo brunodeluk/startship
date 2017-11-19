@@ -1,4 +1,4 @@
-[info] Updating {file:/Users/brunodeluca/faculty/startship/project/}startship-build...
+[info] Updating {file:/Users/brunodeluca/sandbox/startship/project/}startship-build...
 [debug] :: resolving dependencies :: default#startship-build;0.1-SNAPSHOT
 [debug] 	confs: [compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, sources, docs, pom, scala-tool]
 [debug] 	validate = true
@@ -6070,19 +6070,19 @@
 [debug] 	[NOT REQUIRED] org.scala-sbt#template-resolver;0.1!template-resolver.jar
 [debug] 	[NOT REQUIRED] org.scala-lang#jline;2.10.6!jline.jar
 [debug] 	[NOT REQUIRED] org.fusesource.jansi#jansi;1.4!jansi.jar
-[debug] :: resolution report :: resolve 3667ms :: artifacts dl 35ms
-[debug] 	report for default#startship-build;0.1-SNAPSHOT compile produced in /Users/brunodeluca/faculty/startship/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-startship-build-compile.xml
-[debug] 	report for default#startship-build;0.1-SNAPSHOT runtime produced in /Users/brunodeluca/faculty/startship/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-startship-build-runtime.xml
-[debug] 	report for default#startship-build;0.1-SNAPSHOT test produced in /Users/brunodeluca/faculty/startship/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-startship-build-test.xml
-[debug] 	report for default#startship-build;0.1-SNAPSHOT provided produced in /Users/brunodeluca/faculty/startship/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-startship-build-provided.xml
-[debug] 	report for default#startship-build;0.1-SNAPSHOT optional produced in /Users/brunodeluca/faculty/startship/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-startship-build-optional.xml
-[debug] 	report for default#startship-build;0.1-SNAPSHOT compile-internal produced in /Users/brunodeluca/faculty/startship/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-startship-build-compile-internal.xml
-[debug] 	report for default#startship-build;0.1-SNAPSHOT runtime-internal produced in /Users/brunodeluca/faculty/startship/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-startship-build-runtime-internal.xml
-[debug] 	report for default#startship-build;0.1-SNAPSHOT test-internal produced in /Users/brunodeluca/faculty/startship/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-startship-build-test-internal.xml
-[debug] 	report for default#startship-build;0.1-SNAPSHOT plugin produced in /Users/brunodeluca/faculty/startship/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-startship-build-plugin.xml
-[debug] 	report for default#startship-build;0.1-SNAPSHOT sources produced in /Users/brunodeluca/faculty/startship/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-startship-build-sources.xml
-[debug] 	report for default#startship-build;0.1-SNAPSHOT docs produced in /Users/brunodeluca/faculty/startship/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-startship-build-docs.xml
-[debug] 	report for default#startship-build;0.1-SNAPSHOT pom produced in /Users/brunodeluca/faculty/startship/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-startship-build-pom.xml
-[debug] 	report for default#startship-build;0.1-SNAPSHOT scala-tool produced in /Users/brunodeluca/faculty/startship/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-startship-build-scala-tool.xml
-[debug] 	resolve done (3667ms resolve - 35ms download)
+[debug] :: resolution report :: resolve 2581ms :: artifacts dl 32ms
+[debug] 	report for default#startship-build;0.1-SNAPSHOT compile produced in /Users/brunodeluca/sandbox/startship/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-startship-build-compile.xml
+[debug] 	report for default#startship-build;0.1-SNAPSHOT runtime produced in /Users/brunodeluca/sandbox/startship/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-startship-build-runtime.xml
+[debug] 	report for default#startship-build;0.1-SNAPSHOT test produced in /Users/brunodeluca/sandbox/startship/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-startship-build-test.xml
+[debug] 	report for default#startship-build;0.1-SNAPSHOT provided produced in /Users/brunodeluca/sandbox/startship/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-startship-build-provided.xml
+[debug] 	report for default#startship-build;0.1-SNAPSHOT optional produced in /Users/brunodeluca/sandbox/startship/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-startship-build-optional.xml
+[debug] 	report for default#startship-build;0.1-SNAPSHOT compile-internal produced in /Users/brunodeluca/sandbox/startship/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-startship-build-compile-internal.xml
+[debug] 	report for default#startship-build;0.1-SNAPSHOT runtime-internal produced in /Users/brunodeluca/sandbox/startship/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-startship-build-runtime-internal.xml
+[debug] 	report for default#startship-build;0.1-SNAPSHOT test-internal produced in /Users/brunodeluca/sandbox/startship/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-startship-build-test-internal.xml
+[debug] 	report for default#startship-build;0.1-SNAPSHOT plugin produced in /Users/brunodeluca/sandbox/startship/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-startship-build-plugin.xml
+[debug] 	report for default#startship-build;0.1-SNAPSHOT sources produced in /Users/brunodeluca/sandbox/startship/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-startship-build-sources.xml
+[debug] 	report for default#startship-build;0.1-SNAPSHOT docs produced in /Users/brunodeluca/sandbox/startship/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-startship-build-docs.xml
+[debug] 	report for default#startship-build;0.1-SNAPSHOT pom produced in /Users/brunodeluca/sandbox/startship/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-startship-build-pom.xml
+[debug] 	report for default#startship-build;0.1-SNAPSHOT scala-tool produced in /Users/brunodeluca/sandbox/startship/project/target/scala-2.10/sbt-0.13/resolution-cache/reports/default-startship-build-scala-tool.xml
+[debug] 	resolve done (2581ms resolve - 32ms download)
 [info] Done updating.

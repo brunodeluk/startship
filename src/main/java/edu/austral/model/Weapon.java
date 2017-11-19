@@ -97,6 +97,11 @@ public abstract class Weapon extends SpaceModel {
 
     }
 
+    @Override
+    public void collide(Star star) {
+
+    }
+
     /**
      * If we collide with a spaceship we only want to disappear
      * @param spaceship

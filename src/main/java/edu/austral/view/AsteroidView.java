@@ -1,5 +1,6 @@
 package edu.austral.view;
 
+import edu.austral.model.Asteroid;
 import edu.austral.model.GameSetup;
 import edu.austral.model.SpaceModel;
 import processing.core.PApplet;
@@ -17,6 +18,7 @@ public class AsteroidView implements DrawBehaviour {
         graphics.translate(asteroid.position.x(), asteroid.position.y());
         graphics.rotate(PApplet.radians(asteroid.position.module()));
         graphics.noTint();
+        image.resize(((Asteroid) asteroid).getSize(), ((Asteroid) asteroid).getSize());
         graphics.image(image, 0, 0);
         graphics.popMatrix();
         graphics.pushMatrix();

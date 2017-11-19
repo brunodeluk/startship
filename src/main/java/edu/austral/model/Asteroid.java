@@ -3,13 +3,21 @@ package edu.austral.model;
 import edu.austral.util.Random;
 import edu.austral.util.Vector2;
 
-public class Asteroid extends SpaceModel {
+import java.util.LinkedList;
+import java.util.List;
+
+public class Asteroid extends SpaceModel implements Observable{
 
     private int damage;
+    private int size;
 
-    public Asteroid(int score, int life, int damage) {
-        super(score, life);
-        this.damage = damage;
+    private List<Observer> observers;
+
+    public Asteroid(int life) {
+        super((life*3)/2, life);
+        this.damage = life / 2;
+        this.size = (3*life) / 4;
+        this.observers = new LinkedList<>();
         setRandomPosition();
     }
 
@@ -29,7 +37,19 @@ public class Asteroid extends SpaceModel {
      */
 
     public int getDamage() {
-        return damage;
+        return this.damage;
+    }
+
+    private void reduceDamage(int amount) {
+        this.damage -= amount;
+    }
+
+    public int getSize() {
+        return this.size;
+    }
+
+    private void reduceSize(int amount) {
+        this.size -= amount;
     }
 
     /**
@@ -65,15 +85,22 @@ public class Asteroid extends SpaceModel {
     @Override
     public void collide(Bullet bullet) {
         takeLife(bullet.getDamage());
-
+        reduceSize((bullet.getDamage()) / 4);
+        reduceDamage((bullet.getDamage()) / 4);
         if (!isAlive()) {
             bullet.getPlayer().setScore(getScore());
+            if (getScore() > 140) notifyObservers();
             setActive(false);
         }
     }
 
     @Override
     public void collide(Weapon weapon) {
+
+    }
+
+    @Override
+    public void collide(Star star) {
 
     }
 
@@ -105,4 +132,23 @@ public class Asteroid extends SpaceModel {
         direction = direction.rotate((float) Math.PI / 2);
     }
 
+    @Override
+    public void add(Observer observer) {
+        this.observers.add(observer);
+    }
+
+    @Override
+    public void remove(Observer observer) {
+        this.observers.remove(observer);
+    }
+
+    @Override
+    public void spawnBullet() {
+
+    }
+
+    @Override
+    public void notifyObservers() {
+        observers.forEach(o -> o.spawnStar(this));
+    }
 }

@@ -3,6 +3,8 @@ package edu.austral.controller;
 import edu.austral.controller.InputController.InputHandler;
 import edu.austral.model.*;
 import edu.austral.view.GameView;
+import edu.austral.view.SpaceView;
+import edu.austral.view.StarView;
 import processing.core.PApplet;
 
 public class GameController implements Controller, Observer {
@@ -10,13 +12,15 @@ public class GameController implements Controller, Observer {
     private GameModel gameModel;
     private GameView gameView;
     private WeaponPool weaponPool;
+    private BulletFactory bulletFactory;
     private InputHandler inputHandler;
 
     public GameController(PApplet graphics) {
-        this.gameModel    = new GameModel();
-        this.gameView     = new GameView(graphics);
-        this.inputHandler = new InputHandler();
-        this.weaponPool   = new WeaponPool();
+        this.gameModel      = new GameModel();
+        this.gameView       = new GameView(graphics);
+        this.inputHandler   = new InputHandler();
+        this.weaponPool     = new WeaponPool();
+        this.bulletFactory  = new BulletFactory();
     }
 
     /**
@@ -54,7 +58,6 @@ public class GameController implements Controller, Observer {
      */
 
     public void newBullet(Spaceship spaceship) {
-        BulletFactory bulletFactory = new BulletFactory();
         bulletFactory.createBullet(this, spaceship);
     }
 
@@ -64,6 +67,13 @@ public class GameController implements Controller, Observer {
 
     public void spawnWeapons() {
         this.weaponPool.generateRandomWeapon(this);
+    }
+
+    public void newStar(Asteroid asteroid) {
+        Star star = new Star(1000);
+        star.position = asteroid.position;
+        gameModel.addSpaceModel(star);
+        gameView.addView(new SpaceView(star, new StarView()));
     }
 
     public void iterate() {
@@ -129,11 +139,16 @@ public class GameController implements Controller, Observer {
     }
 
     @Override
+    public void spawnStar(Asteroid asteroid) {
+        newStar(asteroid);
+    }
+
+    @Override
     public void update() {
         this.endGame();
     }
 
-    public void endGame() {
+    private void endGame() {
         gameView.stopRender();
     }
 }

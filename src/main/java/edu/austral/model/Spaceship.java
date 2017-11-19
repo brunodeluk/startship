@@ -11,10 +11,6 @@ public class Spaceship extends SpaceModel implements Observable {
     private Player player;
     private Weapon weapon;
 
-    /**
-     * List of observers
-     */
-
     private List<Observer> observers;
 
     public Spaceship(int life) {
@@ -86,6 +82,11 @@ public class Spaceship extends SpaceModel implements Observable {
     @Override
     public void collide(Spaceship spaceship) {
 
+    }
+
+    @Override
+    public void collide(Star star) {
+        this.getPlayer().setScore(star.getScore());
     }
 
     @Override

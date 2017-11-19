@@ -171,6 +171,13 @@ public abstract class SpaceModel implements Model, Collisionable<SpaceModel> {
     public abstract void collide(Spaceship spaceship);
 
     /**
+     * Abstract method for handling collisions with a Star
+     * @param star
+     */
+
+    public abstract void collide(Star star);
+
+    /**
      * Abstract method for handling each sub class iteration
      */
 
