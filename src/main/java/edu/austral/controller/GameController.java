@@ -53,7 +53,7 @@ public class GameController implements Controller, Observer {
      * @param spaceship used to get useful properties
      */
 
-    public void spawnBullet(Spaceship spaceship) {
+    public void newBullet(Spaceship spaceship) {
         BulletFactory bulletFactory = new BulletFactory();
         bulletFactory.createBullet(this, spaceship);
     }
@@ -124,7 +124,16 @@ public class GameController implements Controller, Observer {
      */
 
     @Override
-    public void update(Spaceship spaceship) {
-        spawnBullet(spaceship);
+    public void spawnBullet(Spaceship spaceship) {
+        newBullet(spaceship);
+    }
+
+    @Override
+    public void update() {
+        this.endGame();
+    }
+
+    public void endGame() {
+        gameView.stopRender();
     }
 }

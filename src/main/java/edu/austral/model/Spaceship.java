@@ -52,7 +52,7 @@ public class Spaceship extends SpaceModel implements Observable {
     }
 
     public void shoot() {
-        if (hasWeapon() && weapon.shoot()) notifyObservers();
+        if (hasWeapon() && weapon.shoot()) spawnBullet();
     }
 
     private boolean hasWeapon() {
@@ -70,6 +70,7 @@ public class Spaceship extends SpaceModel implements Observable {
     @Override
     public void collide(Asteroid asteroid) {
         takeLife(asteroid.getDamage());
+        if (!isAlive()) notifyObservers();
     }
 
     @Override
@@ -127,7 +128,12 @@ public class Spaceship extends SpaceModel implements Observable {
     }
 
     @Override
+    public void spawnBullet() {
+        observers.forEach(o -> o.spawnBullet(this));
+    }
+
+    @Override
     public void notifyObservers() {
-        observers.forEach(o -> o.update(this));
+        observers.forEach(Observer::update);
     }
 }

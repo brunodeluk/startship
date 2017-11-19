@@ -2,5 +2,6 @@ package edu.austral.model;
 
 public interface Observer {
 
-    public void update(Spaceship spaceship);
+    public void spawnBullet(Spaceship spaceship);
+    public void update();
 }

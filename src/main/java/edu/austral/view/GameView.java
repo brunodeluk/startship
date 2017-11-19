@@ -1,5 +1,6 @@
 package edu.austral.view;
 
+import edu.austral.model.GameSetup;
 import processing.core.PApplet;
 
 import java.util.LinkedList;
@@ -44,5 +45,11 @@ public class GameView {
 
     public void draw() {
         views.forEach(view -> view.draw(graphics));
+    }
+
+    public void stopRender() {
+        this.graphics.stop();
+        this.graphics.clear();
+        this.graphics.text("Game Over", GameSetup.WIDTH / 2, GameSetup.HEIGHT / 2);
     }
 }
