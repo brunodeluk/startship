@@ -49,7 +49,10 @@ public class GameView {
 
     public void stopRender() {
         this.graphics.stop();
+        this.graphics.delay(2000);
         this.graphics.clear();
-        this.graphics.text("Game Over", GameSetup.WIDTH / 2, GameSetup.HEIGHT / 2);
+        this.graphics.textSize(32);
+        this.graphics.text("GAME OVER", (GameSetup.WIDTH / 2) - 20, GameSetup.HEIGHT / 2);
+        this.graphics.fill(0, 102, 153);
     }
 }

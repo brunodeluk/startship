@@ -26,6 +26,6 @@ public class MachinegunWeaponFactory implements SpaceFactory<Weapon> {
 
     @Override
     public Weapon createSpaceModel() {
-        return new MachinegunWeapon(new Bullet(10, 20), 100, 7.5f);
+        return new MachinegunWeapon(new Bullet(20, 20), 100, 7.5f);
     }
 }
